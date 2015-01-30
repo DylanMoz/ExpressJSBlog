@@ -1,0 +1,35 @@
+Names: Allen Shih, Dylan Mozlowski
+Team: BlueJay, Server
+
+BlogPost.js contains our source code to the app
+Schemas for posts and comments are in the module folder
+
+Here are our MongoDB Schemas:
+
+Post has:
+title = String
+author = String
+content = String
+
+Comment has:
+author = String
+content = String
+_post = ObjectId of Post
+
+Under /posts
+Can read(GET) all the blog posts
+Can create(POST) a new blog post
+
+Under /posts/:id
+Can read(GET) a specific post
+Can update(PUT) a specific post
+Can delete(DELETE) a specific post
+
+Under /posts/:post_id/comments
+Can read(GET) all the comments under a post with post_id
+Can create(POST) a new comment under a post with post_id
+
+Under /posts/:post_id/comments/:comment_id
+Can read(GET) a specific comment of a specific post
+Can update(PUT) a specific comment of a specific post
+Can delete(DELETE) a specific comment of a specific post
