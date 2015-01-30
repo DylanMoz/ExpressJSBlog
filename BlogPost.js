@@ -97,11 +97,11 @@ router.route('/posts/:id')
     });
   });
 
-router.route('/post/:post_id/comments')
+router.route('/posts/:post_id/comments')
 
   // get all comments for a specific post
   .get(function(req,res){
-    Comment.find({_post : req.params.post_id}, function (err, comments) {
+    Comment.find({'_post' : req.params.post_id}, function (err, comments) {
       if (err) {
         res.json(err);
         return;
@@ -117,6 +117,7 @@ router.route('/post/:post_id/comments')
 
     comment.author = req.body.author;
     comment.content = req.body.content;
+    comment._post = req.params.post_id;
 
     comment.save(function (err, comment) {
       if (err) {
@@ -128,7 +129,7 @@ router.route('/post/:post_id/comments')
     });
   });
 
-router.route('/post/:post_id/comments/:comment_id')
+router.route('/posts/:post_id/comments/:comment_id')
 
   // get specific comment
   .get(function(req,res){
@@ -145,7 +146,7 @@ router.route('/post/:post_id/comments/:comment_id')
   // update specific comment
   .put(function(req,res){
     var p = {};
-  
+
     p.author = req.body.author;
     p.content = req.body.content;
     Comment.findOneAndUpdate({ _post : req.params.post_id, _id: req.params.comment_id }, p,  function (err, comment) {
