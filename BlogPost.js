@@ -114,7 +114,7 @@ router.route('/post/:post_id/comments')
   // create a comment
   .post(function(req,res){
     var comment = new Comment();
-    comment.title = req.body.title;
+
     comment.author = req.body.author;
     comment.content = req.body.content;
 
@@ -145,7 +145,7 @@ router.route('/post/:post_id/comments/:comment_id')
   // update specific comment
   .put(function(req,res){
     var p = {};
-    p.title = req.body.title;
+  
     p.author = req.body.author;
     p.content = req.body.content;
     Comment.findOneAndUpdate({ _post : req.params.post_id, _id: req.params.comment_id }, p,  function (err, comment) {
